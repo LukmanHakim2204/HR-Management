@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('job_posting_id');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('email')->unique();

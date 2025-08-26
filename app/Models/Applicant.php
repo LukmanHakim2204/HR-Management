@@ -24,7 +24,6 @@ class Applicant extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'job_posting_id',
         'name',
         'slug',
         'email',
