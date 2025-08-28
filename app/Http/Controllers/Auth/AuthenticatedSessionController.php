@@ -19,8 +19,6 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
-
         $user = Auth::user();
         $user['token'] = $request->user()->createToken('auth')->plainTextToken;
 
@@ -30,6 +28,8 @@ class AuthenticatedSessionController extends Controller
             'data' => $user
         ]);
     }
+
+
 
     /**
      * Destroy an authenticated session.
