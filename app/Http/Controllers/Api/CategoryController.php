@@ -14,4 +14,14 @@ class CategoryController extends Controller
         $categories = Category::get();
         return CategoryResource::collection($categories);
     }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = Category::create($validated);
+        return new CategoryResource($category);
+    }
 }
