@@ -11,6 +11,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/categories', [CategoryController::class, 'index']);
     Route::post('/category', [CategoryController::class, 'store']);
+    Route::put('/category/{category}', [CategoryController::class, 'update']);
 });
 
 require __DIR__ . '/auth.php';

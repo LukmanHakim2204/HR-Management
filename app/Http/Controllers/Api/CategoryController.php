@@ -24,4 +24,14 @@ class CategoryController extends Controller
         $category = Category::create($validated);
         return new CategoryResource($category);
     }
+
+    public function update(Request $request, Category $category)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category->update($validated);
+        return new CategoryResource($category);
+    }
 }
