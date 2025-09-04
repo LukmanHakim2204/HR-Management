@@ -15,6 +15,7 @@ class CategoryController extends Controller
         return CategoryResource::collection($categories);
     }
 
+
     public function store(Request $request)
     {
         $validated = $request->validate([

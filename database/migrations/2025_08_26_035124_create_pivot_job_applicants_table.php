@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             // Foreign keys
-            $table->foreignId('job_id')->constrained('jobs')->onDelete('cascade');
-            $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
+            $table->foreignId('job_id')->constrained('job_postings')->onDelete('cascade');
+    $table->foreignId('applicant_id')->constrained('applicants')->onDelete('cascade');
 
             // Mencegah duplikasi entri
             $table->unique(['job_id', 'applicant_id']);

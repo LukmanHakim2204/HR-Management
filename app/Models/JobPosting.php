@@ -2,27 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Applicant;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class JobPosting extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'images',
-        'title',
-        'category_id',
-        'company_id',
-        'requirements',
-        'benefits',
-        'responsibility',
-        'location',
-        'min_salary',
-        'max_salary',
-        'type',
-        'status'
-    ];
+    protected $fillable = ['images', 'title', 'category_id', 'company_id', 'requirements', 'benefits', 'responsibility', 'location', 'min_salary', 'max_salary', 'type', 'status'];
 
     public function setTitleAttribute($value)
     {
@@ -44,5 +32,9 @@ class JobPosting extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+    public function applicants()
+    {
+        return $this->belongsToMany(Applicant::class, 'pivot_job_applicant', 'job_id', 'applicant_id');
     }
 }
