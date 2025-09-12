@@ -11,6 +11,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 
+Route::get('/job-postings', [JobPostingController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/categories', [CategoryController::class, 'index']);
@@ -22,7 +23,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/company', [CompanyController::class, 'store']);
     Route::put('/company/{company}', [CompanyController::class, 'update']);
 
-    Route::get('/job-postings', [JobPostingController::class, 'index']);
     Route::post('/job-posting', [JobPostingController::class, 'store']);
     Route::put('/job-posting/{jobPosting}', [JobPostingController::class, 'update']);
 });
