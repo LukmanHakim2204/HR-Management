@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('min_salary');
             $table->integer('max_salary');
-            $table->integer('type');
+            $table->enum('type', ['fulltime', 'parttime', 'contract', 'internship']);
             $table->enum('status', ['open', 'closed']);
             $table->timestamps();
         });

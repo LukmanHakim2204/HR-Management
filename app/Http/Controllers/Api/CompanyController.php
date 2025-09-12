@@ -16,6 +16,11 @@ class CompanyController extends Controller
         return CompanyResource::collection($companies);
     }
 
+    public function show(Company $company)
+    {
+        return new CompanyResource($company);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,5 +41,15 @@ class CompanyController extends Controller
 
         $company->update($validated);
         return new CompanyResource($company);
+    }
+
+    // ✅ Opsional: Tambahkan function destroy jika diperlukan
+    public function destroy(Company $company)
+    {
+        $company->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Company deleted successfully'
+        ]);
     }
 }

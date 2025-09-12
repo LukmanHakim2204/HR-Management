@@ -15,7 +15,11 @@ class JobPostingController extends Controller
         $jobPostings = JobPosting::with(['company', 'category'])->get();
         return JobPostingResource::collection($jobPostings);
     }
-
+public function show(JobPosting $jobPosting)
+    {
+        return new JobPostingResource($jobPosting->load(['company', 'category']));
+    }
+    
     public function store(Request $request)
     {
         $validated = $request->validate([
