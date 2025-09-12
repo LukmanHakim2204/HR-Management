@@ -14,8 +14,6 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 // ✅ Job Postings
 Route::get('/job-postings', [JobPostingController::class, 'index']);
 Route::get('/job-postings/{jobPosting}', [JobPostingController::class, 'show']);
-Route::post('/job-posting', [JobPostingController::class, 'store']);
-Route::put('/job-posting/{jobPosting}', [JobPostingController::class, 'update']);
 
 // ✅ Companies bisa diakses tanpa login
 Route::get('/companies', [CompanyController::class, 'index']);
@@ -33,17 +31,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Companies (create, update, delete)
     Route::post('/company', [CompanyController::class, 'store']);
     Route::put('/company/{company}', [CompanyController::class, 'update']);
-<<<<<<< HEAD
-
-    Route::post('/job-posting', [JobPostingController::class, 'store']);
-    Route::put('/job-posting/{jobPosting}', [JobPostingController::class, 'update']);
-=======
     Route::delete('/company/{company}', [CompanyController::class, 'destroy']);
 
     // Applicants
     Route::post('applicants/{applicant}/apply', [ApplicantController::class, 'applyToJob']);
     Route::apiResource('applicants', ApplicantController::class);
->>>>>>> a780e39488186500c015d994887bf5cdf3b113fe
+    // Job Postings
+    Route::post('/job-posting', [JobPostingController::class, 'store']);
+    Route::put('/job-posting/{jobPosting}', [JobPostingController::class, 'update']);
 });
 
 require __DIR__ . '/auth.php';
