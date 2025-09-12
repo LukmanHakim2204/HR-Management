@@ -13,6 +13,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 // ✅ Job Postings
 Route::get('/job-postings', [JobPostingController::class, 'index']);
+Route::get('/job-postings/{jobPosting}', [JobPostingController::class, 'show']);
 Route::post('/job-posting', [JobPostingController::class, 'store']);
 Route::put('/job-posting/{jobPosting}', [JobPostingController::class, 'update']);
 
